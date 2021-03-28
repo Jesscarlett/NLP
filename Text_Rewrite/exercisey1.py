@@ -13,12 +13,12 @@ from docx import Document
 from googletrans import Translator
 import csv
 
-doc_path = "C:/Users/Andrew/Documents/Vocab/Adjective-Stage2-Vocab-excercise.docx"
+doc_path = "C:/Users/Andrew/Documents/AUS-Grade8-Vocab-excercise.docx"
 my_doc = Document(doc_path)
 
 # 5 words in a group
-for i in range(14):
-    with open('C:/Users/Andrew/Documents/Vocab/AdjYear234list.csv', 'r') as file:
+for i in range(32):
+    with open('C:/Users/Andrew/Documents/Year8list.csv', 'r') as file:
         start = i * 10
         n = 0
         finish = start + 10
@@ -38,12 +38,12 @@ for i in range(14):
             # page_soup = bs(page_html, "html.parser")
             # my_divs = page_soup.find_all("p", {"class": 'one-click-content css-fr4dvi-Sentence e15kc6du2'})
 
-            url = "https://www.wordhippo.com/what-is/sentences-with-the-word/" + url_word + ".html"
+            url = "https://sentence.yourdictionary.com/" + url_word
             hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0)'}
             req = urllib.request.Request(url, headers=hdr)
             page_html = urllib.request.urlopen(url).read()
             page_soup = bs(page_html, "html.parser")
-            my_divs = page_soup.find_all("tr", {"id": 'gexv2row3'})
+            my_divs = page_soup.find_all("div", {"class": 'sentence-item'})
 
             for my_div in my_divs:
                 p_str = my_div.text.strip()
@@ -52,6 +52,7 @@ for i in range(14):
                 para = my_doc.add_paragraph(str(n))
                 para.add_run('. ')
                 para.add_run(question)
+                break
             my_doc.save(doc_path)
         # print word group
         random.shuffle(word_group)

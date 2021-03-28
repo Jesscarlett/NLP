@@ -16,7 +16,7 @@ id_list = ['gexv2row1', 'gexv2row2']
 doc_path = "C:/Users/Andrew/Documents/AUS-Grade4-Vocab-excercise.docx"
 n = 0
 
-word = 'fabulous'
+word = 'focus'
 url = "https://www.dictionary.com/browse/" + word
 page_html = request.urlopen(url).read()
 page_soup = bs(page_html, "html.parser")

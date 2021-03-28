@@ -18,7 +18,7 @@ with open(r'D:/ScarlettBooks/temp/Anne of the Island.txt', 'r', encoding="utf8")
     # contents = file.read()
     for line in file:
         line_number += 1
-        if "Chapter I" in line:
+        if "Chapter I" or "Chapter 1" in line:
             print(line_number)
             break
         else:
