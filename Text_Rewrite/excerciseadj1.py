@@ -43,19 +43,43 @@ for i in range(14):
             # my_divs = page_soup.find_all("div", {"class": 'examp dexamp'})
             my_divs = page_soup.find_all("dd", {"class": 's-en'})
             m = 0
-            for my_div in my_divs:
-                p_str = my_div.text.strip()
-                m = m + 1
-                if m < 2:
-                    question = p_str.replace(url_word, '______________')
-                    print(n, '. ', question)
-                    para = my_doc.add_paragraph(str(n))
-                    para.add_run('. ')
-                    para.add_run(question)
-                    continue
-                else:
-                    break
-            my_doc.save(doc_path)
+            if len(my_divs) > 15:
+                for my_div in my_divs:
+                    p_str = my_div.text.strip()
+                    m = m + 1
+                    if m < 2:
+                        question = p_str.replace(url_word, '______________')
+                        print(n, '. ', question)
+                        para = my_doc.add_paragraph(str(n))
+                        para.add_run('. ')
+                        para.add_run(question)
+                        continue
+                    else:
+                        break
+                my_doc.save(doc_path)
+
+            else:
+                url = "https://dictionary.cambridge.org/dictionary/english/" + url_word
+                hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0)'}
+                req = urllib.request.Request(url, headers=hdr)
+                page_html = urllib.request.urlopen(req).read()
+                page_soup = bs(page_html, "html.parser")
+                my_divs = page_soup.find_all("div", {"class": 'examp dexamp'})
+                m = 0
+                for my_div in my_divs:
+                    p_str = my_div.text.strip()
+                    m = m + 1
+                    if m < 2:
+                        question = p_str.replace(url_word, '______________')
+                        print(n, '. ', question)
+                        para = my_doc.add_paragraph(str(n))
+                        para.add_run('. ')
+                        para.add_run(question)
+                        continue
+                    else:
+                        break
+                my_doc.save(doc_path)
+
         # print word group
         random.shuffle(word_group)
         my_doc.add_paragraph(' ')

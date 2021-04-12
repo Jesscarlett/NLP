@@ -13,15 +13,15 @@ from docx import Document
 from googletrans import Translator
 import csv
 
-doc_path = "C:/Users/Andrew/Documents/Vocab/meimei-excercise.docx"
+doc_path = "C:/Users/Andrew/Documents/Vocab/Adverb-Stage3-Vocab-excercise.docx"
 my_doc = Document(doc_path)
 
 # 5 words in a group
-for i in range(70):
-    with open('C:/Users/Andrew/Documents/Vocab/Year4list.csv', 'r') as file:
-        start = i * 5
+for i in range(35):
+    with open('C:/Users/Andrew/Documents/Vocab/AdvYearmiddlelist.csv', 'r') as file:
+        start = i * 10
         n = 0
-        finish = start + 5
+        finish = start + 10
         print(start)
         print(finish)
         word_list = csv.reader(file.readlines()[start:finish])
