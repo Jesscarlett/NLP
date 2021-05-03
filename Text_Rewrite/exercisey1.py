@@ -13,12 +13,12 @@ from docx import Document
 from googletrans import Translator
 import csv
 
-doc_path = "C:/Users/Andrew/Documents/AUS-Grade8-Vocab-excercise.docx"
+doc_path = "C:/Users/Andrew/Documents/Vocab/AUS-Grade8-Vocab-excercise.docx"
 my_doc = Document(doc_path)
 
 # 5 words in a group
 for i in range(32):
-    with open('C:/Users/Andrew/Documents/Year8list.csv', 'r') as file:
+    with open('C:/Users/Andrew/Documents/vocab/Year8list.csv', 'r') as file:
         start = i * 10
         n = 0
         finish = start + 10
@@ -47,7 +47,10 @@ for i in range(32):
 
             for my_div in my_divs:
                 p_str = my_div.text.strip()
-                question = p_str.replace(url_word, '______________')
+                if url_word in p_str:
+                    question = p_str.replace(url_word, '______________')
+                else:
+                    question = p_str.replace(url_word.capitalize(), '______________')
                 print(n, '. ', question)
                 para = my_doc.add_paragraph(str(n))
                 para.add_run('. ')

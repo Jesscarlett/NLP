@@ -40,4 +40,6 @@ def get_semantic_similar_phrases(sentence, n=5):
         sentence_tokens = tokenize(sentence)[0]
         print("")
 
-get_semantic_similar_phrases('who is the founder of microsoft')
+
+get_semantic_similar_phrases('she is beautiful and clever.')
+
