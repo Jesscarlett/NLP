@@ -135,10 +135,10 @@ def main():
         if sys.argv[2] == '-v':
             print('Verbose Mode Activated\n')
             verbose = True
-
+2
     # Open the file given as argument in read-only mode.
-    filehandle = open(sys.argv[1], 'r')
-    # filehandle = open('C:/Users/Andrew/Documents/text.txt', 'r')
+    # filehandle = open(sys.argv[1], 'r')
+    filehandle = open('C:/Users/Andrew/Documents/text.txt', 'r', encoding='utf8')
     textinput = filehandle.read()
     print('\n-----------INPUT TEXT-------------\n')
     print(textinput, '\n')
