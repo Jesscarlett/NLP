@@ -1,12 +1,13 @@
 import json
 
-string = 'star'
-x = string.lower()
-with open("D:/ScarlettBooks/Children-Stories/dictionary_compact.json") as file:
+with open("D:/ScarlettBooks/vocgov1.1/sentencepos_old.json") as file:
     word_dict = json.load(file)
-#     pairs = word_dict.items()
-# for key, value in pairs:
-    print(x + ": " + word_dict[x])
+out_file = open("D:/ScarlettBooks/vocgov1.1/sentencepos.json", "w")
+json.dump(word_dict, out_file, sort_keys=False)
+out_file.close()
+# #     pairs = word_dict.items()
+# # for key, value in pairs:
+#     print(x + ": " + word_dict[x])
 
 # word = string.upper()
 # if word in word_dict:

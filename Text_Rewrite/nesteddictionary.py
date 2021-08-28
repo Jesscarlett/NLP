@@ -4,14 +4,15 @@ import json
 word_list = []
 dict = {}
 meaning = []
-with open('D:/ScarlettBooks/vocgov1.1/juniorwordlist1.csv', encoding='utf-8-sig') as file:
+with open('D:/ScarlettBooks/vocgov1.1/seniorwordlist.csv', encoding='utf-8-sig') as file:
     reader = csv.reader(file)
     for row in reader:
         word = ''.join(row)
         word_list.append(word)
 print(word_list)
+print(len(word_list))
 
-with open('D:/ScarlettBooks/vocgov1.1/juniorwordlist1-meaning.csv', encoding='utf-8-sig') as file:
+with open('D:/ScarlettBooks/vocgov1.1/seniorwordlist1.csv', encoding='utf-8-sig') as file:
     reader = csv.reader(file)
     n = 0
     # i = 0
@@ -49,6 +50,7 @@ with open('D:/ScarlettBooks/vocgov1.1/juniorwordlist1-meaning.csv', encoding='ut
         # if i > 500:
         #     break
 dict[word]['definition'] = d
-out_file = open("D:/ScarlettBooks/vocgov1.1/PSBjunior.json", "w")
+# print(dict)
+out_file = open("D:/ScarlettBooks/vocgov1.1/PSBsenior_old.json", "w")
 json.dump(dict, out_file, indent=4, sort_keys=False)
 out_file.close()
