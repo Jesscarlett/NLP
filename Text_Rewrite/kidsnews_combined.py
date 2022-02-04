@@ -14,10 +14,10 @@ from urllib.request import Request, urlopen
 dictionary = PyDictionary()
 api = datamuse.Datamuse()
 
-doc_path = "C:/Users/Andrew/Documents/test.docx"
+doc_path = "D:/ScarlettBooks/Children-Stories/News-Reading-Comprehension5.docx"
 # word = 'science'
 # find urls
-url = "https://www.kidsnews.com.au/green"
+url = "https://www.kidsnews.com.au/red"
 # page_html = request.urlopen(url).read()
 req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
 page_html = urlopen(req).read()
@@ -40,7 +40,7 @@ print(urls)
 
 # print articles
 my_doc = Document(doc_path)
-for page_url in urls[1:]:
+for page_url in urls[1:50]:
     req = Request(page_url, headers={'User-Agent': 'Mozilla/5.0'})
     page_html = urlopen(req).read()
     page_soup = bs(page_html, "html.parser")
